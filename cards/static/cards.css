@@ -1,0 +1,22 @@
+#question {
+    font-size: 40pt;
+    position: absolute;
+    top: 25%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+}
+
+#answer {
+    font-size: 40pt;
+    position: absolute;
+    top: 45%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+}
+
+#scores {
+    position: absolute;
+    top: 80%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+}
