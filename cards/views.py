@@ -1,6 +1,6 @@
+from django.db.models import Count, Avg
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from django.views import generic
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
 
@@ -9,12 +9,17 @@ from .models import Card, Score
 from random import choice
 
 
-class IndexView(generic.ListView):
-    template_name = 'cards/index.html'
-    context_object_name = 'latest_cards'
+def stats(request):
+    graded_cards = Card.objects.annotate(grade=Avg('score__value'))
+    data = {
+        'total': Card.objects.count(),
+        'new': Card.objects.annotate(num_scores=Count('score')).filter(num_scores=0).count(),
+        'poor': graded_cards.filter(grade__lte=1.5).count(),
+        'average': graded_cards.filter(grade__gt=1.5).filter(grade__lte=2.5).count(),
+        'good': graded_cards.filter(grade__gt=2.5).count()
+    }
 
-    def get_queryset(self):
-        return Card.objects.order_by('-creation_date')[:3]
+    return render(request, 'cards/index.html', data)
 
 
 @ensure_csrf_cookie

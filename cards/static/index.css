@@ -1,0 +1,9 @@
+.stats {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.stats p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

@@ -1,9 +1,25 @@
-{% if latest_cards %}
-    <ul>
-    {% for card in latest_cards %}
-        <li><a href="/cards/{{ card.id }}/">{{ card.question }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No questions are available.</p>
-{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% load staticfiles %}
+    <!-- jQuery and Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <!-- server resources -->
+  <title>Site</title>
+</head>
+
+<body>
+<div class="stats">
+    <p>Total: {{ total }} cards</p>
+    <p>New: {{ new }} cards</p>
+    <p>Poor: {{ poor }} cards</p>
+    <p>Average: {{ average }} cards</p>
+    <p>Good: {{ good }} cards</p>
+    <p><a href="random/">Start review</a></p>
+</div>
+</body>
+</html>

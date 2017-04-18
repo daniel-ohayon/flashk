@@ -1,6 +1,8 @@
-
-
 - Performance statistics
     - proportion of cards in each state
     - how many reviews per day
 - Probabilistic choice of card
+    - ?
+- Improve card loading logic
+    - GET request for each card
+- Load cards into it
