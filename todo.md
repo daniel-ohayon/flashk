@@ -1,8 +1,16 @@
 - Performance statistics
+	- 
     - proportion of cards in each state
     - how many reviews per day
+- List view
+	- ability to see card answer
+- Home view
+	- nicer layout
+- Ability to add decks
 - Probabilistic choice of card
     - ?
 - Improve card loading logic
     - GET request for each card
-- Load cards into it
+- Load Google Keep cards
+- Deploy on a true server
+- Write mobile application

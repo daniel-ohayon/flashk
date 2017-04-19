@@ -13,13 +13,11 @@
 </head>
 
 <body>
-<div class="stats">
-    <p>Total: {{ total }} cards</p>
-    <p>New: <a href="list/new">{{ new }} cards</a></p>
-    <p>Poor: <a href="list/poor">{{ poor }} cards</a></p>
-    <p>Average: {{ average }} cards</p>
-    <p>Good: <a href="list/good">{{ good }} cards</a></p>
-    <p><a href="review/">Start review</a></p>
-</div>
+<div id="back"><a href="/cards">Back to main page</a></div>
+<ul>
+{% for card in cards %}
+    <li>{{ card.question }}</li>
+{% endfor %}
+</ul>
 </body>
 </html>

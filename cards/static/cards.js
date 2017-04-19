@@ -25,6 +25,26 @@ $(document).ready(function() {
 
     setupCsrf();
     var isAnswerShown = false;
+    var cardIndex = -1;
+    var cards = [];
+    var maxIndex = -1;
+
+    // TODO refactor to object style
+    function displayNextCard() {
+        cardIndex++;
+        var $answer = $('#answer');
+        $answer.hide();
+        $('#scores').hide();
+        $('#question').text(cards[cardIndex].question);
+        $answer.text(cards[cardIndex].answer);
+        isAnswerShown = false;
+    }
+
+    $.get(window.location.pathname + 'next/', function(response) {
+        cards = response.output;
+        maxIndex = response.output.length;
+        displayNextCard();
+    });
 
     $(document).keypress(function(e) {
         // if user presses space bar, show answer
@@ -38,10 +58,14 @@ $(document).ready(function() {
     $(document).keypress(function (e) {
         if (isAnswerShown && e.which in KEY_CODES) {
             // post score for the current card
-            $.post(window.location.pathname + 'score/',
+            $.post('/cards/' + cards[cardIndex].id + '/score/',
                 {'score': KEY_CODES[e.which]},
                 function() {
-                    location.assign('/cards/random');
+                    if (cardIndex === maxIndex) {
+                        // when review is done, go back to home page
+                        window.location = '/cards/';
+                    }
+                    displayNextCard();
                 }
             );
         }
