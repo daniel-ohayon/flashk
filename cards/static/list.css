@@ -1,0 +1,9 @@
+#back {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#modal-question, #modal-answer {
+    text-align: center;
+}

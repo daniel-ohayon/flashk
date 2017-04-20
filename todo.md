@@ -10,4 +10,4 @@
     - ?
 - Deploy on a true server
 - Write mobile application
-- Bug: end of review
+- Improve JS code style (object-oriented)

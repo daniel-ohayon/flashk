@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <script src="{% static 'list.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'list.css' %}">
     <!-- server resources -->
   <title>Site</title>
 </head>
@@ -16,8 +18,23 @@
 <div id="back"><a href="/cards">Back to main page</a></div>
 <ul>
 {% for card in cards %}
-    <li>{{ card.question }}</li>
+    <li><a href="#" data-answer="{{ card.answer }}" data-toggle="modal" data-target="#card-modal"> {{ card.question }}
+        </a></li>
 {% endfor %}
 </ul>
+
+<!-- Modal with card question -->
+<div class="modal fade" id="card-modal" tabindex="-1" role="dialog" aria-labelledby="card-modal"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="modal-question"></div>
+        <div id="modal-answer"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
