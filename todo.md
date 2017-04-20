@@ -1,5 +1,4 @@
 - Performance statistics
-	- 
     - proportion of cards in each state
     - how many reviews per day
 - List view
@@ -9,8 +8,6 @@
 - Ability to add decks
 - Probabilistic choice of card
     - ?
-- Improve card loading logic
-    - GET request for each card
-- Load Google Keep cards
 - Deploy on a true server
 - Write mobile application
+- Bug: end of review

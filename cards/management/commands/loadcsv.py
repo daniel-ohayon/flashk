@@ -18,6 +18,7 @@ class Command(BaseCommand):
             next(reader)
             for i, row in enumerate(reader, 1):
                 self.stdout.write("Processing row %d..." % i)
+                row = [e.replace(';', '\n') for e in row]
                 card = Card()
                 card.question = row[0]
                 card.answer = row[1]

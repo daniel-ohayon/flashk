@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     $.get(window.location.pathname + 'next/', function(response) {
         cards = response.output;
-        maxIndex = response.output.length;
+        maxIndex = response.output.length - 1;
         displayNextCard();
     });
 
@@ -63,7 +63,7 @@ $(document).ready(function() {
                 function() {
                     if (cardIndex === maxIndex) {
                         // when review is done, go back to home page
-                        window.location = '/cards/';
+                        document.location.href = '/cards/';
                     }
                     displayNextCard();
                 }
