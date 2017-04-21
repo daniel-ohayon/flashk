@@ -1,13 +1,13 @@
+- Card view
+    - make buttons clickable
 - Performance statistics
-    - proportion of cards in each state
-    - how many reviews per day
-- List view
-	- ability to see card answer
-- Home view
-	- nicer layout
+    - number of reviews per day
+    - stacked barplot with evolution of proportions
+- Support for multiple users
 - Ability to add decks
-- Probabilistic choice of card
-    - ?
+- Ability to add new cards without admin interface
+- CSV export
+- Probabilistic choice of card?
 - Deploy on a true server
 - Write mobile application
 - Improve JS code style (object-oriented)

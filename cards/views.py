@@ -8,17 +8,21 @@ from .models import Card, Score
 from random import sample
 
 
-def home_page(request):
+def cards_stats(request):
     graded_cards = Card.objects.annotate(grade=Avg('score__value'))
-    data = {
-        'total': Card.objects.count(),
-        'new': Card.objects.annotate(num_scores=Count('score')).filter(num_scores=0).count(),
-        'poor': graded_cards.filter(grade__gt=2.5).count(),
-        'average': graded_cards.filter(grade__gt=1.5).filter(grade__lte=2.5).count(),
-        'good': graded_cards.filter(grade__lte=1.5).count()
-    }
+    data = [
+        ['Grade', 'Count'],
+        ['New', Card.objects.annotate(num_scores=Count('score')).filter(num_scores=0).count()],
+        ['Poor', graded_cards.filter(grade__gt=2.5).count()],
+        ['Average', graded_cards.filter(grade__gt=1.5).filter(grade__lte=2.5).count()],
+        ['Good', graded_cards.filter(grade__lte=1.5).count()]
+    ]
 
-    return render(request, 'cards/index.html', data)
+    return JsonResponse({'output': data})
+
+
+def home_page(request):
+    return render(request, 'cards/index.html')
 
 
 def cards_list(request, option):

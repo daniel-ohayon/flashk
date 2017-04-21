@@ -1,9 +1,8 @@
-.stats {
-    margin-top: 20px;
-    text-align: center;
+#chart-div {
+    margin: auto;
+    width: 400px;
 }
 
-.stats p {
-    margin-top: 2px;
-    margin-bottom: 2px;
+#review-div {
+    text-align: center;
 }

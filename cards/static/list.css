@@ -6,4 +6,10 @@
 
 #modal-question, #modal-answer {
     text-align: center;
+    font-size: large;
+    white-space: pre-line; /* respect newline characters in text */
+}
+
+.modal-content {
+    margin-top: 25%;
 }
