@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'cards.middleware.login_check.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'flashk.urls'
@@ -119,3 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# login settings
+LOGIN_URL = '/login/'
+LOGIN_EXEMPT_URLS = ['admin/*']
+LOGIN_REDIRECT_URL = '/cards/'

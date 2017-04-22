@@ -12,12 +12,12 @@ $(document).ready(function() {
 
     function getDataAndDrawChart() {
         $.get('stats/', function(data) {
-            var stats = data['output'];
-            drawChart(stats);
+            drawPieChart(data['current-data']);
+            drawStackedBarChart(data['past-data'])
         });
     }
 
-    function drawChart(stats) {
+    function drawPieChart(stats) {
 
         var data = google.visualization.arrayToDataTable(stats, false);
 
@@ -56,6 +56,16 @@ $(document).ready(function() {
 
         chart.draw(data, options);
         $('#review-div').show();  // display review button only once the graph is displayed
+    }
+
+    function drawStackedBarChart(stats) {
+        var data = google.visualization.arrayToDataTable(stats, false);
+        var chart = new google.visualization.ColumnChart(document.getElementById('barchart-div'));
+        chart.draw(data, {
+            'width': 600,
+            'height': 200,
+            isStacked: true
+        });
     }
 
 

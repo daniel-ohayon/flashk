@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^cards/', include('cards.urls'))
+    url(r'^admin/', admin.site.urls),  # admin app
+    url('^', include('django.contrib.auth.urls')),  # authentication URLs
+    url(r'^cards/', include('cards.urls'))  # cards app
 ]

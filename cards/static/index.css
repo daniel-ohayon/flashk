@@ -6,3 +6,8 @@
 #review-div {
     text-align: center;
 }
+
+#barchart-div {
+    width: 600px;
+    margin: auto;
+}
