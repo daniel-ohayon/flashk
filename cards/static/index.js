@@ -13,7 +13,8 @@ $(document).ready(function() {
     function getDataAndDrawChart() {
         $.get('stats/', function(data) {
             drawPieChart(data['current-data']);
-            drawStackedBarChart(data['past-data'])
+            drawStackedBarChart(data['past-data']);
+            $('#review-div').show();  // display review button only once the graphs are displayed
         });
     }
 
@@ -34,10 +35,12 @@ $(document).ready(function() {
         });
 
         var options = {
-            'title':'Reviews',
-            'width':400,
+            'width':250,
             'height':300,
-            'slices': sliceOptions
+            'slices': sliceOptions,
+            'pieHole': 0.4,
+            'legend': {'position': 'top'},
+            'chartArea': {'width': '100%'}
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
@@ -55,18 +58,23 @@ $(document).ready(function() {
         }
 
         chart.draw(data, options);
-        $('#review-div').show();  // display review button only once the graph is displayed
     }
 
     function drawStackedBarChart(stats) {
         var data = google.visualization.arrayToDataTable(stats, false);
         var chart = new google.visualization.ColumnChart(document.getElementById('barchart-div'));
         chart.draw(data, {
-            'width': 600,
-            'height': 200,
-            isStacked: true
+            'width': 400,
+            'height': 250,
+            'legend': {'position': 'top'},
+            'chartArea': {'width': '100%'},
+            isStacked: true,
+            'series': { // TODO remove hardcoding
+                0: {'color': 'red'},
+                1: {'color': 'orange'},
+                2: {'color': 'green'}
+            }
         });
     }
-
 
 });

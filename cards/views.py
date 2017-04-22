@@ -43,15 +43,19 @@ def cards_stats(request):
     ]
 
     past_data = [['Date', 'Poor', 'Average', 'Good']]
-    for n in range(1, 7):
+    for n in range(0, 7):
         date = datetime.today() - timedelta(days=n)
         cards = get_cards_before(date)
-        past_data.append([
-            str(date).split()[0],
+        counts = [
             filter_by_grade(cards, Grade.POOR).count(),
             filter_by_grade(cards, Grade.AVERAGE).count(),
             filter_by_grade(cards, Grade.GOOD).count()
-        ])
+        ]
+        if sum(counts) == 0:
+            # do not include stats past a date where no stats are available
+            break
+        date_str = str(date).split()[0]
+        past_data.append([date_str] + counts)
 
     return JsonResponse({'current-data': present_data, 'past-data': past_data})
 

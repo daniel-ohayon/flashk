@@ -1,13 +1,24 @@
+.columns {
+    width: 100%;
+}
+
+.column {
+    width: 50%;
+}
+
 #chart-div {
+    width: 250px;
     margin: auto;
-    width: 400px;
+}
+
+#barchart-div {
+    width: 500px;
+    margin: auto;
 }
 
 #review-div {
     text-align: center;
+    margin-top: 30px;
 }
 
-#barchart-div {
-    width: 600px;
-    margin: auto;
-}
+
